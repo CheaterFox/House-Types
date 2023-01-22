@@ -8,6 +8,7 @@ import main.model.concretes.Villa;
 import java.util.ArrayList;
 import java.util.List;
 
+// This class contains Lists of Different House Types
 public class HouseListRepo {
 
     private List<House> standardHouses;
@@ -18,6 +19,7 @@ public class HouseListRepo {
 
     private static HouseListRepo houseListRepo;
 
+    // used singleton pattern
     private HouseListRepo() {
         loadDefaultLists();
     }

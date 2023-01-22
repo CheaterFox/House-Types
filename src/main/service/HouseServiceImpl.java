@@ -13,8 +13,9 @@ public class HouseServiceImpl implements HouseService{
     private final List<House> villas;
     private final List<House> summerHouses;
 
+    // used singleton pattern
     private HouseServiceImpl() {
-        HouseListRepo houseListRepo = HouseListRepo.getSingleInstance();
+        HouseListRepo houseListRepo = HouseListRepo.getSingleInstance(); // getting single instance for calling & using Lists in the methods
         this.standardHouses = houseListRepo.getStandardHouses();
         this.villas = houseListRepo.getVillas();
         this.summerHouses = houseListRepo.getSummerHouses();
@@ -50,6 +51,10 @@ public class HouseServiceImpl implements HouseService{
         return standardHousesTotalPrice + villasTotalPrice + summerHousesTotalPrice;
     }
 
+    // private because user does not need to see the calculate method
+    /* If user want to price he will just call get...Price method and
+     behind scene this method will calculate price and return it to the other methods
+     */
     private double calculateTotalPrice(List<House> houseList) {
         double totalPrice = 0;
         for (House house : houseList) {
@@ -81,6 +86,10 @@ public class HouseServiceImpl implements HouseService{
         return (standardHousesAverageSquareMeters + villasAverageSquareMeters + summerHousesAverageSquareMeters)/3;
     }
 
+    // private because user does not need to see the calculate method
+    /* If user want to average square meters he will just call get...AverageSquareMeters method and
+    behind scene this method will calculate average square meters and return it to the other methods
+     */
     private double calculateAverageSquareMeters(List<House> houseList) {
         double totalSquareMeters = 0;
         double averageSquareMeters;
@@ -106,6 +115,10 @@ public class HouseServiceImpl implements HouseService{
         return filterHousesByRoomAndLivingRoom(summerHouses, room, livingRoom);
     }
 
+    // private because user does not need to see the filter method
+    /* If user want to filtered houses he will just call getFiltered... method and
+    behind scene this method will filter and return it to the other methods
+     */
     private List<House> filterHousesByRoomAndLivingRoom(List<House> houseList, int room, int livingRoom) {
         List<House> filteredHouseList = new ArrayList<>();
         for (House house : houseList) {
